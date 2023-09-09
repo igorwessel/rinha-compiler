@@ -1,10 +1,10 @@
 package interpreter
 
 import (
+	"regexp"
 	"strconv"
-  "regexp"
-  "unicode"
-  "strings"
+	"strings"
+	"unicode"
 )
 
 type TokenType string
@@ -25,8 +25,8 @@ type Token struct {
 }
 
 type Tokenizer struct {
-	Text         string
-	Pos          int
+	Text        string
+	Pos         int
 	CurrentChar *byte
 }
 
@@ -74,8 +74,9 @@ func (t *Tokenizer) GetToken() Token {
 		}
 
 		if t.compareString("(") || t.compareString(")") {
+			a := *t.CurrentChar
 			t.Next()
-			return Token{PARENTHESES, string(*t.CurrentChar)}
+			return Token{PARENTHESES, string(a)}
 		}
 
 		if t.compareString("+") {

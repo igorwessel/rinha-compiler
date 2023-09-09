@@ -1,9 +1,5 @@
 package interpreter
 
-import (
-	"fmt"
-)
-
 type Interpreter struct {
 	Tokenizer    Tokenizer
 	CurrentToken *Token
@@ -19,14 +15,18 @@ func (i *Interpreter) eat(tokenType TokenType) {
 
 func (i *Interpreter) factor() int {
 	token := *i.CurrentToken
-	fmt.Println(token)
-	i.eat(INTEGER)
-	return token.Value.(int)
+	if token.Name == INTEGER {
+		i.eat(INTEGER)
+		return token.Value.(int)
+	} else {
+		i.eat(PARENTHESES)
+		return i.Expr()
+	}
 }
 
 func (i *Interpreter) term() int {
-
 	result := i.factor()
+
 	for i.CurrentToken.Name == MULTIPLICATION || i.CurrentToken.Name == DIVISION {
 		op_token := *i.CurrentToken
 
@@ -42,7 +42,18 @@ func (i *Interpreter) term() int {
 	return result
 }
 
-func (i *Interpreter) parent() int {
+/*
+<expr> ::= <term> (("+" | "-") <term>)*
+<term> ::= <factor> (("*" | "/") <factor>)*
+<factor> ::= [0-9] | "(" <expr> ")"
+
+https://bnfplayground.pauliankline.com/?bnf=<expr>%20%3A%3A%3D%20<term>%20(("%2B"%20%7C%20"-")%20<term>)*%0A<term>%20%3A%3A%3D%20<factor>%20(("*"%20%7C%20"%2F")%20<factor>)*%0A<factor>%20%3A%3A%3D%20%5B0-9%5D%20%7C%20"("%20<expr>%20")"&name=
+*/
+// https://bnfplayground.pauliankline.com/?bnf=<expr>%20%3A%3A%3D%20<term>%20(("%2B"%20%7C%20"-")%20<term>)*%0A<term>%20%3A%3A%3D%20<factor>%20(("*"%20%7C%20"%2F")%20<factor>)*%0A<factor>%20%3A%3A%3D%20%5B0-9%5D%20%7C%20"("%20<expr>%20")"&name=
+func (i *Interpreter) Expr() int {
+	if i.CurrentToken.Value == nil {
+		*i.CurrentToken = i.Tokenizer.GetToken()
+	}
 	result := i.term()
 
 	for i.CurrentToken.Name == PLUS || i.CurrentToken.Name == MINUS {
@@ -56,23 +67,6 @@ func (i *Interpreter) parent() int {
 			result -= i.term()
 		}
 
-	}
-
-	return result
-}
-
-func (i *Interpreter) Expr() int {
-	*i.CurrentToken = i.Tokenizer.GetToken()
-	result := i.parent()
-
-	for i.CurrentToken.Name == PARENTHESES {
-		fmt.Println(i.CurrentToken)
-		op_token := *i.CurrentToken
-
-		if op_token.Name == PARENTHESES {
-			i.eat(PARENTHESES)
-			result += i.parent()
-		}
 	}
 
 	return result

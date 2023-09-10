@@ -185,3 +185,33 @@ Como pode a AST é muito menor do que a Parser Tree, basicamente apenas capturam
 - AST não grava todos os detalhes de uma sintaxe, nenhuma regra/nó/parentheses por exemplo.
 - AST são densas comparadas a Parser Tree para mesma linguagem construtora.
 
+
+### Mecanismos para percorrer uma AST
+
+Existem alguns tipos de algoritmos que podemos utilizar para andar pela AST, sendo eles:
+
+1. Depth First Search (DFS)
+    - Inorder Traversal
+    - Preorder Traversal
+    - Postorder Traversal
+2. Level Order Traversal (Breadth First Search - BFS)
+3. Boundary Traversal
+4. Diagonal Traversal
+
+
+#### Depth First Search
+
+Algo interessante para se notar que os nomes do tipos de algoritmos: Inorder/Preorder/Postorder Traversal, se da pela ordem das acoes que você realiza ao visitar o nó. Por exemplo:
+
+```js
+function visit(node) {
+    // preorder actions
+    left = visit(node.left)
+    
+    // inorder actions
+    right = visit(node.right)
+
+    // postorder actions
+}
+```
+

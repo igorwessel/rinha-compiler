@@ -20,9 +20,11 @@ func main() {
 			log.Fatal("noo")
 		}
 
-		interpreter := interpreter.Interpreter{interpreter.Tokenizer{string, 0, nil}, &interpreter.Token{}}
+    parser := interpreter.Parser{interpreter.Tokenizer{string, 0, nil}, &interpreter.Token{}}
+		interpreter := interpreter.Interpreter{}
+    interpreter.AddParser(parser)
 
-		result := interpreter.Expr()
+		result := interpreter.Interpret()
 		fmt.Println("Result ", result)
 
 	}

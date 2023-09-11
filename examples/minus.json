@@ -1,5 +1,5 @@
 {
-  "name": "examples/sum.rinha",
+  "name": "examples/minus.rinha",
   "expression": {
     "kind": "Binary",
     "lhs": {
@@ -8,28 +8,28 @@
       "location": {
         "start": 0,
         "end": 1,
-        "filename": "examples/sum.rinha"
+        "filename": "examples/minus.rinha"
       }
     },
-    "op": "Add",
+    "op": "Sub",
     "rhs": {
       "kind": "Int",
       "value": 1,
       "location": {
         "start": 2,
         "end": 3,
-        "filename": "examples/sum.rinha"
+        "filename": "examples/minus.rinha"
       }
     },
     "location": {
       "start": 0,
       "end": 3,
-      "filename": "examples/sum.rinha"
+      "filename": "examples/minus.rinha"
     }
   },
   "location": {
     "start": 0,
     "end": 3,
-    "filename": "examples/sum.rinha"
+    "filename": "examples/minus.rinha"
   }
 }

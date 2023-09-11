@@ -17,7 +17,6 @@ afterEach(() => {
 })
 
 describe("Print", () => {
-
     it("String", () => {
         const ast = getAST("string")
 
@@ -48,5 +47,24 @@ describe("Print", () => {
         expect(spy).toHaveBeenCalled()
         //@ts-ignore
         expect(spy.mock.calls[0][0]).toEqual(1)
+    })
+})
+
+
+describe("Binary", () => {
+    it("Sum", () => {
+        const ast = getAST('sum')
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(2)
+    })
+
+    it("Minus", () => {
+        const ast = getAST('minus')
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(0)
     })
 })

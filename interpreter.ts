@@ -40,7 +40,19 @@ type Binary = {
     rhs: Term
 }
 
-type Term = Str | Int | Bool | Binary | Print
+type Var = {
+    kind: 'Var',
+    text: string
+}
+
+type If = {
+    kind: "If"
+    condition: Term,
+    then: Term,
+    otherwise: Term
+}
+
+type Term = Str | Int | Bool | Binary | If | Var | Print
 
 export type File = {
     name: string
@@ -62,6 +74,9 @@ export function evaluate(program: Term) {
         }
         case "Str": {
             return program.value
+        }
+        case "Var": {
+            return program.text
         }
         case "Binary": {
             switch (program.op) {
@@ -93,8 +108,10 @@ export function evaluate(program: Term) {
                     return evaluate(program.lhs) || evaluate(program.rhs)
             }
         }
+        case "If": {
+            return evaluate(program.condition) ? evaluate(program.then) : evaluate(program.otherwise)
+        }
         case "Print": {
-            //@ts-ignore
             return console.log(evaluate(program.value))
         }
     }

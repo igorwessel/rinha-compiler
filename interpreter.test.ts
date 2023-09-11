@@ -154,4 +154,13 @@ describe("Binary", () => {
 
         expect(result).toBe(true)
     })
-}) 
+})
+
+
+it("If-Else", () => {
+    const ast = getAST("if")
+
+    const result = evaluate(ast.expression)
+
+    expect(result).toBe("a")
+})

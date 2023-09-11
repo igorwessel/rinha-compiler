@@ -75,6 +75,22 @@ export function evaluate(program: Term) {
                     return evaluate(program.lhs) / evaluate(program.rhs)
                 case "Rem":
                     return evaluate(program.lhs) % evaluate(program.rhs)
+                case "Eq":
+                    return evaluate(program.lhs) == evaluate(program.rhs)
+                case "Neq":
+                    return evaluate(program.lhs) != evaluate(program.rhs)
+                case "Lt":
+                    return evaluate(program.lhs) < evaluate(program.rhs)
+                case "Gt":
+                    return evaluate(program.lhs) > evaluate(program.rhs)
+                case "Lte":
+                    return evaluate(program.lhs) <= evaluate(program.rhs)
+                case "Gte":
+                    return evaluate(program.lhs) >= evaluate(program.rhs)
+                case "And":
+                    return evaluate(program.lhs) && evaluate(program.rhs)
+                case "Or":
+                    return evaluate(program.lhs) || evaluate(program.rhs)
             }
         }
         case "Print": {

@@ -1,0 +1,35 @@
+{
+  "name": "examples/rem.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Int",
+      "value": 4,
+      "location": {
+        "start": 0,
+        "end": 1,
+        "filename": "examples/rem.rinha"
+      }
+    },
+    "op": "Rem",
+    "rhs": {
+      "kind": "Int",
+      "value": 2,
+      "location": {
+        "start": 4,
+        "end": 5,
+        "filename": "examples/rem.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 5,
+      "filename": "examples/rem.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 5,
+    "filename": "examples/rem.rinha"
+  }
+}

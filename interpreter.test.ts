@@ -67,4 +67,28 @@ describe("Binary", () => {
 
         expect(result).toBe(0)
     })
+
+    it("Mul", () => {
+        const ast = getAST("mul")
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(4)
+    })
+
+    it("Div", () => {
+        const ast = getAST("div")
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(5)
+    })
+
+    it("Rem", () => {
+        const ast = getAST("rem")
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toEqual(0)
+    })
 })

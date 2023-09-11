@@ -1,13 +1,15 @@
-type BinaryOperator = "Add" | "Sub" |
-    "Mul"|
-    "Div"|
-    "Rem"|
-    "Eq"|
-    "Neq"|
-    "Lt"|
-    "Gt"|
-    "Lte"|
-    "Gte"|
+type BinaryOperator =
+    "Add" |
+    "Sub" |
+    "Mul" |
+    "Div" |
+    "Rem" |
+    "Eq" |
+    "Neq" |
+    "Lt" |
+    "Gt" |
+    "Lte" |
+    "Gte" |
     "And" |
     "Or"
 
@@ -67,6 +69,12 @@ export function evaluate(program: Term) {
                     return evaluate(program.lhs) + evaluate(program.rhs)
                 case "Sub":
                     return evaluate(program.lhs) - evaluate(program.rhs)
+                case "Mul":
+                    return evaluate(program.lhs) * evaluate(program.rhs)
+                case "Div":
+                    return evaluate(program.lhs) / evaluate(program.rhs)
+                case "Rem":
+                    return evaluate(program.lhs) % evaluate(program.rhs)
             }
         }
         case "Print": {

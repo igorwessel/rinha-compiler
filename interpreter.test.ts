@@ -162,5 +162,31 @@ it("If-Else", () => {
 
     const result = evaluate(ast.expression)
 
-    expect(result).toBe("a")
+    expect(result).toBe(true)
+})
+
+it("Let", () => {
+    const ast = getAST("let")
+
+    const result = evaluate(ast.expression)
+
+    expect(result).toBe(1)
+})
+
+describe("Function", () => {
+    it("Non-Recursive", () => {
+        const ast = getAST("function")
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(2)
+    })
+
+    it("Recursive", () => {
+        const ast = getAST("fib")
+
+        const result = evaluate(ast.expression)
+
+        expect(result).toBe(55)
+    })
 })

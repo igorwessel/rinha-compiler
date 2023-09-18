@@ -1,5 +1,0 @@
-let sum = fn (n,d) => {
-  n + d
-};
-
-sum(1,1)

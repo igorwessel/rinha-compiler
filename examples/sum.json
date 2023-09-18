@@ -1,0 +1,35 @@
+{
+  "name": "examples/sum.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Int",
+      "value": 1,
+      "location": {
+        "start": 0,
+        "end": 1,
+        "filename": "examples/sum.rinha"
+      }
+    },
+    "op": "Add",
+    "rhs": {
+      "kind": "Int",
+      "value": 1,
+      "location": {
+        "start": 2,
+        "end": 3,
+        "filename": "examples/sum.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 3,
+      "filename": "examples/sum.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 3,
+    "filename": "examples/sum.rinha"
+  }
+}

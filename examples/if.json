@@ -1,0 +1,43 @@
+{
+  "name": "examples/if.rinha",
+  "expression": {
+    "kind": "If",
+    "condition": {
+      "kind": "Bool",
+      "value": true,
+      "location": {
+        "start": 4,
+        "end": 8,
+        "filename": "examples/if.rinha"
+      }
+    },
+    "then": {
+      "kind": "Bool",
+      "value": true,
+      "location": {
+        "start": 14,
+        "end": 18,
+        "filename": "examples/if.rinha"
+      }
+    },
+    "otherwise": {
+      "kind": "Bool",
+      "value": false,
+      "location": {
+        "start": 30,
+        "end": 35,
+        "filename": "examples/if.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 37,
+      "filename": "examples/if.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 37,
+    "filename": "examples/if.rinha"
+  }
+}

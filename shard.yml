@@ -1,0 +1,13 @@
+name: rinha-compiler
+version: 0.1.0
+
+authors:
+  - Igor Wessel <igor_wessel@hotmail.com>
+
+targets:
+  rinha-compiler:
+    main: src/rinha-compiler.cr
+
+crystal: 1.9.2
+
+license: MIT

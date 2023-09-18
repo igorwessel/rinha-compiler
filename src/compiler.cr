@@ -23,12 +23,12 @@ class Rinha::Compiler
 
 
     def push(reg : String)
-      @code << "    push #{reg}\n"
+      @code << "   push #{reg}\n"
       @stack_size += 1
     end
 
     def pop(reg : String)
-      @code << "    pop #{reg}\n"
+      @code << "   pop #{reg}\n"
       @stack_size -= 1
     end
 
@@ -53,9 +53,9 @@ class Rinha::Compiler
     def visit(node : Rinha::Parser::Print)
       node.value.accept self
 
-      @code << "    mov rax, 60\n"
+      @code << "   mov rax, 60\n"
       self.pop("rdi")
-      @code << "    syscall\n"
+      @code << "   syscall\n"
     end
 
     def visit(node : Rinha::Parser::Var)
@@ -79,7 +79,13 @@ class Rinha::Compiler
     end
 
     def visit(node : Rinha::Parser::Binary)
-      puts "binary"
+      left = node.lhs.accept self
+
+      @code << "   mov rax, #{left}\n"
+
+      right = node.rhs.accept self
+
+      @code << "   add rax, #{right}\n"
     end
 
     def visit(node : Rinha::Parser::Int)
